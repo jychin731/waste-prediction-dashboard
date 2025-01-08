@@ -4,9 +4,12 @@ import joblib
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Load the tuned SVR model
+# Define the model path relative to the current working directory
 model_path = "tuned_svr_model_Overall_Total_Waste_Generated_(tonne).pkl"
-svr_model = joblib.load(model_path)
+
+# Check if the file exists to avoid further errors
+if not os.path.exists(model_path):
+    raise FileNotFoundError(f"Model file not found at {model_path}")
 
 # Sidebar for user input (key features)
 st.sidebar.header("User Input Parameters")
